@@ -90,7 +90,14 @@ is composite (non-atomic):
 
 	cons[car[x];cdr[x]]=x
 
+>>
  *)
+
+Theorem car_x_is_x : forall x y : cell, car (cons x y) = x.
+Abort.
+
+Theorem cdr_x_is_y : forall x y : cell, cdr (cons x y) = y.
+Abort.
 
 (*NOTE: these are candidates for theorems to be proved.*)
 
