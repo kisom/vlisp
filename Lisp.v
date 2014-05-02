@@ -15,6 +15,10 @@ M-expressions with some representation of S-expressions.
 
 *)
 
+(* begin hide *)
+Require Import Bool.
+(*end hide *)
+
 (** ** Symbolic Expressions
 
 Atoms are the basic building blocks of Lisp; the Lisp 1.5 manual notes
@@ -73,3 +77,36 @@ composite argument. cdr is also undefined if its argument is atomic.
 *)
 
 Definition cdr (a : cell) : cell := NIL.
+
+(**
+<<
+Given any S-expression, it is possible to produce any subexpression of it by a suitable composition of car's and cdr's. If _x_ and _y_ represent any two S-expressions, the following identities are true:
+
+	car[cons[x;y]]=x
+	cdr[cons[x;y]]=y
+
+The following identity is also true for any S-expression x such that x
+is composite (non-atomic):
+
+	cons[car[x];cdr[x]]=x
+
+ *)
+
+(*NOTE: these are candidates for theorems to be proved.*)
+
+(** Variables are used to give names to S-expressions. *)
+
+(** 
+<<
+
+A function whose value is either true or false is called a
+predicate. In LISP the values true and false are represented by the
+atomic symbols T and F, respectively. A LISP predicate is therefore a
+function whose value is either T or F.
+
+The predicate eq is a test for equality on atomic symbols. It is
+undefined for non-atomic arguments.
+*)
+
+Inductive pred : atomic_symbol -> bool -> Set :=. 
+Definition eq  (x y : atomic_symbol) : bool := false.
