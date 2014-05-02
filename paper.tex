@@ -47,9 +47,11 @@ The core questions to be explored are:
 \end{enumerate}
 
 The project delineates itself into four core areas: the \emph{syntax},
-\emph{semantics}, \emph{parser}, and \emph{interpreter}. Section 2
-covers the syntax and semantics as implemented in Coq, while Section 3
-covers a parser and interpreter as implemented in OCaml.
+\emph{semantics}, \emph{parser}, and \emph{interpreter}. Syntax itself
+is split into two forms: S-expressions (the syntax of Lisp source);
+and M-expressions, the notation for writing recursive functions of
+S-expressions. The Coq implementation will cover M-expressions, while
+S-expressions will be handled by the parser.
 
 \begin{figure}[h]
 \includegraphics{Lisp_Maxwells_Equations}
