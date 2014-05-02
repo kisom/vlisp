@@ -1,10 +1,11 @@
 HTML_FILES = Lisp.html
-PDF_FILES = Lisp.pdf
+PDF_FILES = paper.pdf
+PAPER_HOME = files.kyleisom.net:files/vlisp/
 
 %.html: %.glob
 	coqdoc $*.v
 
-Lisp.pdf: Lisp.tex paper.tex
+paper.pdf: Lisp.tex paper.tex
 	xelatex paper.tex
 
 %.tex: %.glob
@@ -13,6 +14,8 @@ Lisp.pdf: Lisp.tex paper.tex
 %.glob: %.v
 	coqc $<
 
+upload_paper: paper.pdf
+	scp paper.pdf $(PAPER_HOME)
 
 all: $(HTML_FILES) $(PDF_FILES)
 
