@@ -33,7 +33,25 @@ interpreter as it is built. The core language syntax and semantics are
 slated to be built using Coq, extracted to OCaml; the interpreter and
 parser should be implemented with \verb|ocamlyacc| in OCaml itself.
 
-\begin{figure}{h}
+The core questions to be explored are:
+
+\begin{enumerate}
+  \item What is the syntax of a formally-verified Lisp?
+  \item What are the semantics of a formally-verified Lisp?
+  \item What guarantees can we make about the behaviour of VLisp?
+  \item Working under the assumption that Lisp (in particular, a Lisp
+    derived from the equations in Figure 1) can be considered as a
+    sort of ``McCarthy's Equations of Software'' (MEoS), what theorems
+    can be made regarding its behaviour and properties?
+  \item What are the practical, useful implications of these theorems?
+\end{enumerate}
+
+The project delineates itself into four core areas: the \emph{syntax},
+\emph{semantics}, \emph{parser}, and \emph{interpreter}. Section 2
+covers the syntax and semantics as implemented in Coq, while Section 3
+covers a parser and interpreter as implemented in OCaml.
+
+\begin{figure}[h]
 \includegraphics{Lisp_Maxwells_Equations}
 \caption{McCarthy's Equations of Software}
 \end{figure}
