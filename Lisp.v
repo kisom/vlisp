@@ -6,12 +6,12 @@ formally-verified Lisp, built from McCarthy's Equations of
 Software. 
 
 The Lisp 1.5 manual distinguishes between two types of
-expressions._S-expressions_, which are the symbolic expressions that
-comprise Lisp programs. _M-expressions_ are the _source language which
+expressions. _S-expressions_ are the symbolic expressions that
+comprise Lisp programs; _M-expressions_ are the _source language which
 specifies in what way the S-expressions are to be processed_. It is
 the job of the interpreter to convert S-expressions into
 M-expressions; this program will attempt to codify a representation of
-M-expressions with some representation of S-expressions.
+M-expressions.
 
 *)
 
