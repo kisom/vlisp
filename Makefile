@@ -4,11 +4,11 @@ PDF_FILES = Lisp.pdf
 %.html: %.glob
 	coqdoc $*.v
 
-%.pdf: %.tex
-	xelatex $<
+Lisp.pdf: Lisp.tex paper.tex
+	xelatex paper.tex
 
 %.tex: %.glob
-	coqdoc -latex $*.v
+	coqdoc -latex -s --body-only $*.v
 
 %.glob: %.v
 	coqc $<
@@ -17,7 +17,7 @@ PDF_FILES = Lisp.pdf
 all: $(HTML_FILES) $(PDF_FILES)
 
 clean:
-	rm -f *.glob *.vo *.tex *.log *.aux *.sty
+	rm -f *.glob *.vo Lisp.tex *.log *.aux *.sty
 
 nuke: clean
 	rm -f *.pdf *.html *.css

@@ -21,3 +21,8 @@ Some of the questions I want to explore are:
   McCarthy's equations, what theorems can we make about it's behaviour
   and properties?
 * What are the practical, useful implications of these theorems?
+
+### Progress
+
+As research and development on this project progresses, it will be
+documented in a [paper](http://files.kyleisom.net/vlisp/paper.pdf).
