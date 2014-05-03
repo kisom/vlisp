@@ -1,0 +1,61 @@
+The Lisp Language
+=================
+
+The Building Blocks
+-------------------
+
+All elements in Lisp are either atomic symbols or S-expressions.
+
+Atomic symbols:
+
+The Elementary Equations
+------------------------
+
+cons[A;B] = (A . B)
+car[(A . B)] = A
+cdr[(A . B)] = B
+
+The S-expression composite identity theorem:
+
+cons[car[x];cdr[x]] = x
+
+true = T
+false = F
+
+eq[A;B] = if a == b then T else F
+atom[A] = if a is an atom, then T, else F
+
+
+List Notation
+-------------
+
+Dot notation: (A . (B . (C . NIL)))
+List notation: (A B C)
+
+Abbreviating multiple sequences of car and cdr is done by starting
+with a c, ending with an r, with a d for each cdr and an a for each
+car, interpreted in order from right to left:
+
+cadr[x] = car[cdr[x]]
+caddr[x] = car[cdr[cdr[x]]]
+cadadr[x] = car[cdr[car[cdr[x]]]]
+
+
+Labels
+------
+If e is an expression, and a is its name, we give e the label a via
+
+label[a;e]
+
+
+Lambda
+------
+If e is a form in the variables x_1; ...; x_n, then the expression
+λ[[x1;...;x_n];e] represents the function of n variables obtained by
+substituting the n arguments in order for the variables x_1;...;x_n,
+respectively. For example, λ[[x;y];y^2+x] is a function of two
+variables, and λ[[x;y];y^2+x][3;4] = 4^2+3 = 19. This is distinct from
+λ[[y;x][y^2+x][3;4], which is 13. This follows the form of the lambda
+calculus. 
+
+λ[[x;y][y^2+x] = (lambda (x y) (+ (^ y 2) x))

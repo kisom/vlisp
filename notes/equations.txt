@@ -1,6 +1,8 @@
 McCarthy's Equations of Software
 ================================
 
+evalquote is the universal Lisp function.
+
 evalquote[fn;x] = apply[fn;x;NIL]
 
 where
@@ -33,5 +35,3 @@ evcon[c;a] = [eval[caar[c];a] -> eval[cadaar[c];a];
 
 evlis[m;a] = [null[m] -> NIL;
               T -> cons[eval[car[m];a];evlis[cdr[m];a]]]
-
-
