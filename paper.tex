@@ -15,30 +15,29 @@
 
 Alan Kay once described a certain half-page of code in the Lisp 1.5
 manual\footnote{http://www.softwarepreservation.org/projects/LISP/book/LISP\%201.5\%20Programmers\%20Manual.pdf}
-as the ``Maxwell's Equations of
-Software''\footnote{http://queue.acm.org/detail.cfm?id=1039523},
-noting that ``This is the whole world of programming in a few lines
-that I can put my hand over.'' (These equations are described in
-Figure 1.) Given a concise definition of the ``whole world of
-programming'', as a series of equations, can we build a
-formally-verified implementation? What would such an implementation
-tell us about the world of programming? Such an implementation might
-be constructed using Coq\footnote{http://coq.inria.fr/}, a formal
-proof management system. The VLisp project is an attempt to formally
-codify these equations, consider useful theorems about them, and from
-this specification, extract an implementation in OCaml.
+as 
+\begin{quote}
+These were ``Maxwell’s Equations of Software!'' This is the whole world of programming in a few lines that I can put my hand over\footnote{http://queue.acm.org/detail.cfm?id=1039523}.
+\end{quote}
 
-In order to do this, this paper will include the documented Lisp
-interpreter as it is built. The core language syntax and semantics are
-slated to be built using Coq, extracted to OCaml; the interpreter and
-parser should be implemented with \verb|ocamlyacc| in OCaml itself.
+\begin{figure}[h]
+\includegraphics{Lisp_Maxwells_Equations}
+\caption{McCarthy's Equations of Software}
+\end{figure}
 
-The core questions to be explored are:
+(These equations are described in Figure 1.) If we posit that these
+equations are, in fact, an analogue of Maxwell's equations that
+capture a description of ``the whole world of programming'' in a
+mathematically-precise language, can a formally-verified
+implementation be built? What does this implementation tell us about
+the world of programming?
+
+Some core questions this might immediately invoke are,
 
 \begin{enumerate}
   \item What is the syntax of a formally-verified Lisp?
   \item What are the semantics of a formally-verified Lisp?
-  \item What guarantees can we make about the behaviour of VLisp?
+  \item What guarantees can we make about the behaviour of this Lisp?
   \item Working under the assumption that Lisp (in particular, a Lisp
     derived from the equations in Figure 1) can be considered as a
     sort of ``McCarthy's Equations of Software'' (MEoS), what theorems
@@ -46,17 +45,37 @@ The core questions to be explored are:
   \item What are the practical, useful implications of these theorems?
 \end{enumerate}
 
-The project delineates itself into four core areas: the \emph{syntax},
-\emph{semantics}, \emph{parser}, and \emph{interpreter}. Syntax itself
-is split into two forms: S-expressions (the syntax of Lisp source);
-and M-expressions, the notation for writing recursive functions of
-S-expressions. The Coq implementation will cover M-expressions, while
-S-expressions will be handled by the parser.
+While the end goal is to build a formal model of Lisp from McCarthy's
+equations, it will be necessary to implement the first chapter of the
+Lisp 1.5 manual, ``The Lisp Language''.
 
-\begin{figure}[h]
-\includegraphics{Lisp_Maxwells_Equations}
-\caption{McCarthy's Equations of Software}
-\end{figure}
+\section{The Lisp Language}
+
+Before delving into a software implementation, let us consider Lisp,
+the language.
+
+McCarthy splits the language into two formats:
+
+\begin{itemize}
+
+\item \emph{S-expressions} (symbolic expressions) are the notation of
+  Lisp programs,
+
+\item \emph{M-epxressions} (meta-expressions) are the notation of the
+  source language that specifies how to process S-expressions.
+
+\end{itemize}
+
+Immediately we are presented with the question of representation; that
+is, how to separate the quotidian task of rote parsing of input text
+from the extraction of the central tents, the core of the language?
+What does it mean to be a S-expression? Of course, one could reply to
+this question with ``either a left parenthesis, an S-expression, a
+dot, an S-expression, and right parenthesis or an atomic
+symbol''. Then, perhaps it is M-expressions through which we formalise
+our description of an S-expression, and perhaps they might provide a
+notation through which we are able to express the manipulation and
+construction of S-expressions?
+
 \input{Lisp}
-
 \end{document}
