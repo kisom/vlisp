@@ -1,0 +1,37 @@
+McCarthy's Equations of Software
+================================
+
+evalquote[fn;x] = apply[fn;x;NIL]
+
+where
+
+apply[fn;x;a] =
+     [atom[fn] -> [eq[fn;CAR] -> caar[x];
+                   eq[fn;CDR] -> cdar[x];
+                   eq[fn;CONS] -> cons[car[x];cadr[x]];
+                   eq[fn;ATOM] -> atom[car[x]];
+                   eq[fn;EQ] -> eq[car[x], cadr[x]];
+                   T -> apply[eval[fn;a];x;a]];
+      eq[car[fn];LAMBDA] -> eval[caddr[fn];pairlis[cadr[fn];x;a]];
+      eq[car[fn];LABEL] -> apply[caddr[fn];x;cons[cons[cadr[fn];caddr[fn]];a]]]
+
+eval[e;a] = [atom[e] -> cdr[assoc[e;a]];
+             atom[car[e]] -> [eq[car[e];QUOTE] -> cadr[e];
+                              eq[car[e];COND] -> evcon[cdr[e];a];
+                              T -> apply[car[e];evlis[cdr[e];a];a]];
+             T -> apply[car[e];evlis[cdr[e];a];a]]
+
+pairlis[x;y;a] = [null[x] -> a;
+                  T->cons[cons[car[x];car[y]];
+                          pairlis[cdr[x];cdr[y];a]]]
+
+assoc[x;a] = [equal[caar[a];x] -> car[a];
+              T -> assoc[x;cdr[a]]]
+
+evcon[c;a] = [eval[caar[c];a] -> eval[cadaar[c];a];
+              T -> evcon[cdr[c];a]]
+
+evlis[m;a] = [null[m] -> NIL;
+              T -> cons[eval[car[m];a];evlis[cdr[m];a]]]
+
+
