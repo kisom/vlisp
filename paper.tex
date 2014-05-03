@@ -69,13 +69,29 @@ McCarthy splits the language into two formats:
 Immediately we are presented with the question of representation; that
 is, how to separate the quotidian task of rote parsing of input text
 from the extraction of the central tents, the core of the language?
-What does it mean to be a S-expression? Of course, one could reply to
-this question with ``either a left parenthesis, an S-expression, a
-dot, an S-expression, and right parenthesis or an atomic
-symbol''. Then, perhaps it is M-expressions through which we formalise
-our description of an S-expression, and perhaps they might provide a
-notation through which we are able to express the manipulation and
-construction of S-expressions?
+What does it mean to be an S-expression? An S-expression consists of
+either
+
+\begin{itemize}
+  \item an atomic symbol
+  \item or composed of a pair of S-expressions
+\end{itemize}
+
+Syntactically, an atomic symbol is a string of characters (starting
+with a letter); the Lisp 1.5 manual imposes the limitation that the
+characters composing an atomic symbol be restricted to numbers and
+capital letters. In this paper, we'll follow this form for atomic
+symbols (and represent them in fixed width font) to distinguish them
+from other symbols. An S-expression is either one of these atomic
+symbols, or composed of the form $($sexpr . sexpr$)$.
+
+Examples of S-expressions:
+
+\begin{itemize}
+  \item \verb|ATOM|
+  \item $($\verb|A| . \verb|B|$)$
+  \item $($\verb|A| . $($\verb|B| . \verb|C|$))$
+\end{itemize}
 
 \input{Lisp}
 \end{document}
